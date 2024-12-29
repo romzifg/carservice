@@ -12,6 +12,7 @@ class StorePhoto extends Model
 
     protected $fillable = [
         'photo',
-        'car_store_id'
+        'car_store_id',
+        'deleted_at'
     ];
 }

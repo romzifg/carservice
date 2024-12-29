@@ -22,7 +22,8 @@ class CarStore extends Model
         'city_id',
         'thumbnail',
         'phone_number',
-        'cs_name'
+        'cs_name',
+        'address'
     ];
 
     public function setNameAttribute($value)

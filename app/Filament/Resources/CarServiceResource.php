@@ -56,11 +56,12 @@ class CarServiceResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([Tables\Columns\TextColumn::make('name')
-                ->searchable(),
-            Tables\Columns\TextColumn::make('price'),
-            Tables\Columns\ImageColumn::make('icon'),
-            Tables\Columns\ImageColumn::make('photo'),
+            ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\ImageColumn::make('icon'),
+                Tables\Columns\ImageColumn::make('photo'),
             ])
             ->filters([
                 //
