@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CarStoreResource\Pages;
-use App\Filament\Resources\CarStoreResource\RelationManagers;
 use App\Filament\Resources\CarStoreResource\RelationManagers\PhotosRelationManager;
 use App\Models\CarService;
 use App\Models\CarStore;
@@ -14,7 +13,6 @@ use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CarStoreResource extends Resource
 {
