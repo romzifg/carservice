@@ -8,7 +8,7 @@ Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/transactions', [FrontController::class, 'transactions'])->name('front.transaction');
 Route::post('/transactions/details', [FrontController::class, 'transaction_details'])->name('front.transaction.details');
 
-// Route::get('/search'. [FrontController::class, 'search'])->name('front.search');
+Route::get('/search', [FrontController::class, 'search'])->name('front.search');
 
 Route::get('/store/details/{carStore:slug}', [FrontController::class, 'details'])->name('front.details');
 

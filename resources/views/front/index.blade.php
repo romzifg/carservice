@@ -39,7 +39,7 @@
                 <h1 class="font-semibold text-white">Our Great Services</h1>
                 <div class="grid grid-cols-3 gap-4">
                     @forelse ($services as $service)
-                        <a href="#" class="service-link card-services">
+                        <a href="#" class="service-link card-services" data-service="{{$service->id}}">
                             <div
                                 class="rounded-[20px] border border-[#E9E8ED] py-4 flex flex-col items-center text-center gap-4 bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FF8E62]">
                                 <div class="w-[50px] h-[50px] flex shrink-0">
