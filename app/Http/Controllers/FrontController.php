@@ -41,4 +41,11 @@ class FrontController extends Controller
             'city'  => $city
         ]);
     }
+
+    public function details(CarStore $carStore) {
+        $serviceTypeId = session()->get('serviceTypeId');
+        $carService = CarService::where('id', $serviceTypeId)->first();
+
+        return view('front.details', compact('carStore', 'carService'));
+    }
 }
