@@ -14,7 +14,7 @@
     <main
         class="bg-[#FAFAFA] max-w-[640px] mx-auto min-h-screen relative flex flex-col has-[#CTA-nav]:pb-[120px] has-[#Bottom-nav]:pb-[120px]">
         <div id="Top-nav" class="flex items-center justify-between px-4 pt-5">
-            <a href="booking.html">
+            <a href="{{ url()->previous() }}">
                 <div class="w-10 h-10 flex shrink-0">
                     <img src="{{ asset('assets/images/icons/back.svg') }}" alt="icon">
                 </div>
@@ -33,18 +33,18 @@
                     <h2 class="font-semibold">Workshop At</h2>
                     <div class="flex items-center w-full gap-[10px] bg-white">
                         <div class="w-[80px] h-[60px] flex shrink-0 rounded-xl overflow-hidden">
-                            <img src="{{ asset('assets/images/thumbnails/th-details-1.png') }}"
-                                class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{ Storage::url($carStore->thumbnail) }}" class="w-full h-full object-cover"
+                                alt="thumbnail">
                         </div>
                         <div class="flex flex-col">
                             <div class="flex items-center gap-1">
-                                <p class="font-semibold w-fit">Shayna Xtra Wash</p>
+                                <p class="font-semibold w-fit">{{ $carStore->name }}</p>
                                 <div class="w-[18px] h-[18px] flex shrink-0">
                                     <img src="{{ asset('assets/images/icons/verify.svg') }}" alt="verified">
                                 </div>
                             </div>
                             <div class="flex items-center gap-[2px]">
-                                <p class="text-sm leading-[21px] text-[#909DBF]">Jalan Tendean Pusat Club 10</p>
+                                <p class="text-sm leading-[21px] text-[#909DBF]">{{ $carStore->address }}</p>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                 <img src="{{ asset('assets/images/icons/illustration.svg') }}" alt="icon">
                             </div>
                             <div class="flex flex-col h-fit">
-                                <p class="font-semibold">Gold Wash</p>
+                                <p class="font-semibold">{{ $carService->name }}</p>
                                 <p class="text-sm leading-[21px] text-[#909DBF]">Top Rated Service</p>
                             </div>
                         </div>
@@ -69,8 +69,8 @@
                 <hr class="border-[#E9E8ED]">
                 <div id="Price-details" class="flex flex-col gap-[10px]">
                     <div class="flex items-center justify-between">
-                        <p class="text-sm leading-[21px]">Gold Wash Price</p>
-                        <p class="font-semibold">Rp 12.560.000</p>
+                        <p class="text-sm leading-[21px]">{{ $carService->name }} Price</p>
+                        <p class="font-semibold">Rp {{ number_format($carService->price, 0, ',', '.') }}</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm leading-[21px]">Booking Fee</p>
@@ -78,11 +78,13 @@
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm leading-[21px]">PPN 11%</p>
-                        <p class="font-semibold">Rp 1.325.889</p>
+                        <p class="font-semibold">Rp {{ number_format($carService->price * 0.11, 0, ',', '.') }}</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm leading-[21px]">Grand Total</p>
-                        <p class="font-bold text-xl leading-[30px] text-[#FF8E62]">Rp 14.294.000</p>
+                        <p class="font-bold text-xl leading-[30px] text-[#FF8E62]">Rp
+                            {{ number_format($carService->price + 25000 + $carService->price * 0.11, 0, ',', '.') }}
+                        </p>
                     </div>
                 </div>
             </div>
