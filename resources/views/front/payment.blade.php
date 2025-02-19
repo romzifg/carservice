@@ -74,24 +74,25 @@
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm leading-[21px]">Booking Fee</p>
-                        <p class="font-semibold">Rp 25.000</p>
+                        <p class="font-semibold">Rp {{ number_format($bookingFee, 0, ',', '.') }}</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm leading-[21px]">PPN 11%</p>
-                        <p class="font-semibold">Rp {{ number_format($carService->price * 0.11, 0, ',', '.') }}</p>
+                        <p class="font-semibold">Rp {{ number_format($totalPpn, 0, ',', '.') }}</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm leading-[21px]">Grand Total</p>
                         <p class="font-bold text-xl leading-[30px] text-[#FF8E62]">Rp
-                            {{ number_format($carService->price + 25000 + $carService->price * 0.11, 0, ',', '.') }}
+                            {{ number_format($grandTotal, 0, ',', '.') }}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="flex h-full flex-1 mt-5">
-            <form action="success.html"
+            <form action="{{ route('front.booking.payment.store') }}" method="POST" enctype="multipart/form-data"
                 class="w-full flex flex-col rounded-t-[30px] p-5 pt-[30px] gap-[26px] bg-white overflow-x-hidden mb-0 mt-auto">
+                @csrf
                 <div id="Payment-info" class="flex flex-col gap-4">
                     <h2 class="font-semibold">Send Payment</h2>
                     <div class="flex items-center w-full gap-[10px] bg-white">
@@ -141,7 +142,7 @@
                             onclick="document.getElementById('Proof').click()">
                             Add an attachments
                         </button>
-                        <input type="file" name="" id="Proof" class="absolute -z-10" required>
+                        <input type="file" name="proof" id="Proof" class="absolute -z-10" required>
                     </div>
                 </div>
                 <hr class="border-[#E9E8ED]">
