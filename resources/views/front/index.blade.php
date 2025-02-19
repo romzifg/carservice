@@ -1,16 +1,5 @@
-<!doctype html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('output.css') }}" rel="stylesheet">
-    <link href="{{ asset('main.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-</head>
-
-<body>
+@extends('front.layouts.app')
+@section('content')
     <main
         class="bg-[#FAFAFA] max-w-[640px] mx-auto min-h-screen relative flex flex-col has-[#CTA-nav]:pb-[120px] has-[#Bottom-nav]:pb-[120px]">
         <div class="bg-[#270738] absolute top-0 max-w-[640px] w-full mx-auto rounded-b-[50px] h-[370px]"></div>
@@ -39,7 +28,7 @@
                 <h1 class="font-semibold text-white">Our Great Services</h1>
                 <div class="grid grid-cols-3 gap-4">
                     @forelse ($services as $service)
-                        <a href="#" class="service-link card-services" data-service="{{$service->id}}">
+                        <a href="#" class="service-link card-services" data-service="{{ $service->id }}">
                             <div
                                 class="rounded-[20px] border border-[#E9E8ED] py-4 flex flex-col items-center text-center gap-4 bg-white transition-all duration-300 hover:ring-2 hover:ring-[#FF8E62]">
                                 <div class="w-[50px] h-[50px] flex shrink-0">
@@ -71,19 +60,19 @@
             class="fixed bottom-0 w-full max-w-[640px] mx-auto border-t border-[#E9E8ED] p-[20px_24px] bg-white z-20">
             <ul class="flex items-center justify-evenly">
                 <li>
-                    <a href="index.html" class="flex flex-col items-center text-center gap-1">
+                    <a href="{{ route('front.index') }}" class="flex flex-col items-center text-center gap-1">
                         <div class="w-6 h-6 flex shrink-0 ">
-                            <img src="{{ asset('assets/images/icons/element-equal.svg') }}" alt="icon">
+                            <img src="{{ asset('assets/images/icons/element-equal-grey.svg') }}" alt="icon">
                         </div>
-                        <p class="font-semibold text-xs leading-[18px] text-[#FF8969]">Home</p>
+                        <p class="font-semibold text-xs leading-[18px] text-[#BABEC7]">Home</p>
                     </a>
                 </li>
                 <li>
-                    <a href="check-booking.html" class="flex flex-col items-center text-center gap-1">
+                    <a href="{{ route('front.transaction') }}" class="flex flex-col items-center text-center gap-1">
                         <div class="w-6 h-6 flex shrink-0 ">
-                            <img src="{{ asset('assets/images/icons/note-favorite-grey.svg') }}" alt="icon">
+                            <img src="{{ asset('assets/images/icons/note-favorite.svg') }}" alt="icon">
                         </div>
-                        <p class="font-semibold text-xs leading-[18px] text-[#BABEC7]">Orders</p>
+                        <p class="font-semibold text-xs leading-[18px] text-[#FF8969]">Orders</p>
                     </a>
                 </li>
                 <li>
@@ -105,7 +94,9 @@
             </ul>
         </nav>
     </main>
+@endsection
 
+@push('before-scripts')
     <script>
         document.querySelectorAll('.service-link').forEach(function(link) {
             link.addEventListener('click', function(e) {
@@ -117,6 +108,4 @@
             })
         })
     </script>
-</body>
-
-</html>
+@endpush
